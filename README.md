@@ -22,4 +22,4 @@
 
 ## 👤 Автор проекта
 - **Исследователь:** `g37`
-- **Репозиторий на GitHub:** [giobio291-frys/ML-Ai-Security](https://github.com/giobio291-frys/ML-Ai-Security)
+- **Репозиторий на GitHub:** [giobio291-frys/Security37](https://github.com/giobio291-frys/Security37)
