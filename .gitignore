@@ -1,0 +1,25 @@
+# Python & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.ipynb_checkpoints/
+
+# Large ML Models & Datasets (keep repo clean, track code & small samples only)
+03-Datasets-Models/*.pt
+03-Datasets-Models/*.pth
+03-Datasets-Models/*.bin
+03-Datasets-Models/*.onnx
+03-Datasets-Models/*.safetensors
+03-Datasets-Models/*.h5
+03-Datasets-Models/*.zip
+03-Datasets-Models/*.tar.gz
+
+# OS & Secrets
+.DS_Store
+Thumbs.db
+.env
+*.key
+secrets.json
