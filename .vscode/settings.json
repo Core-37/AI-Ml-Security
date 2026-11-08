@@ -1,0 +1,11 @@
+{
+  "editor.wordWrap": "on",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "editor.fontSize": 14,
+  "editor.lineNumbers": "on",
+  "editor.minimap.enabled": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "markdown.preview.breaks": true,
+  "terminal.integrated.defaultProfile.windows": "PowerShell"
+}
