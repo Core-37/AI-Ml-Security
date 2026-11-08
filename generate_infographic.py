@@ -1,0 +1,253 @@
+# -*- coding: utf-8 -*-
+"""
+Script to generate a comprehensive, beautiful SVG infographic:
+'Полный путь сетевого пакета: от браузера до сервера и обратно'
+"""
+import os
+
+svg_content = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1550" width="100%" height="100%" style="background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="grad-client" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#388bfd" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-encap" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8957e5" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#a371f7" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-tcp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d29922" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#e3b341" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-server" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#238636" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#2ea043" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-codes" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#da3633" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#f85149" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="40" y="30" width="1120" height="90" rx="16" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="70" y="72" font-size="26" font-weight="bold" fill="#58a6ff">🗺️ ПОЛНЫЙ ПУТЬ СЕТЕВОГО ПАКЕТА (КАРТА-ПАМЯТКА)</text>
+  <text x="70" y="100" font-size="15" fill="#8b949e">От клика в браузере (Frontend) до ответа в базе данных (Backend) — всё в одной схеме</text>
+
+  <!-- ================= STEP 1: CLIENT & APPLICATION ================= -->
+  <g transform="translate(40, 145)">
+    <rect width="1120" height="235" rx="16" fill="url(#grad-client)" stroke="#1f6feb" stroke-width="1.5"/>
+    <!-- Badge -->
+    <rect x="25" y="20" width="140" height="30" rx="8" fill="#1f6feb"/>
+    <text x="35" y="40" font-size="13" font-weight="bold" fill="#ffffff">ШАГ 1: КЛИЕНТ</text>
+    <text x="180" y="41" font-size="18" font-weight="bold" fill="#c9d1d9">Браузер и Прикладной уровень (HTTP / HTTPS)</text>
+    
+    <!-- Left Box: Description -->
+    <rect x="25" y="65" width="520" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="45" y="95" font-size="14" font-weight="bold" fill="#58a6ff">Что происходит:</text>
+    <text x="45" y="122" font-size="13.5" fill="#c9d1d9">• Ты вводишь логин/пароль и жмёшь кнопку «Войти».</text>
+    <text x="45" y="147" font-size="13.5" fill="#c9d1d9">• Создаётся HTTP-запрос (метод POST с телом данных).</text>
+    <text x="45" y="172" font-size="13.5" fill="#c9d1d9">• Заголовки: Host (сайт), Cookie (пропуск), User-Agent.</text>
+    <text x="45" y="197" font-size="13" font-weight="bold" fill="#f85149">⚠️ ПРАВИЛО: Сервер НИКОГДА не доверяет клиенту!</text>
+
+    <!-- Right Box: Request Preview -->
+    <rect x="565" y="65" width="530" height="150" rx="10" fill="#0d1117" stroke="#30363d"/>
+    <text x="585" y="92" font-family="monospace" font-size="13" font-weight="bold" fill="#7ee787">POST /api/login HTTP/1.1</text>
+    <text x="585" y="115" font-family="monospace" font-size="12" fill="#8b949e">Host: bank.com</text>
+    <text x="585" y="135" font-family="monospace" font-size="12" fill="#8b949e">User-Agent: Chrome / Windows</text>
+    <text x="585" y="155" font-family="monospace" font-size="12" fill="#8b949e">Cookie: session_id=xyz987</text>
+    <text x="585" y="175" font-family="monospace" font-size="12" fill="#d2a8ff">{"user": "admin", "password": "secret"}</text>
+    <text x="585" y="198" font-size="11" fill="#79c0ff">🔒 HTTPS: упаковывает весь этот текст в нечитаемый шифр TLS</text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M 600 380 L 600 410" stroke="#58a6ff" stroke-width="3" stroke-dasharray="5,5"/>
+  <polygon points="595,410 605,410 600,420" fill="#58a6ff"/>
+
+  <!-- ================= STEP 2: ENCAPSULATION (MATRYOSHKA) ================= -->
+  <g transform="translate(40, 425)">
+    <rect width="1120" height="235" rx="16" fill="url(#grad-encap)" stroke="#8957e5" stroke-width="1.5"/>
+    <rect x="25" y="20" width="220" height="30" rx="8" fill="#8957e5"/>
+    <text x="35" y="40" font-size="13" font-weight="bold" fill="#ffffff">ШАГ 2: УПАКОВКА (МАТРЁШКА)</text>
+    <text x="260" y="41" font-size="18" font-weight="bold" fill="#c9d1d9">Инкапсуляция (Сверху вниз от Приложения к Проводам)</text>
+
+    <!-- Layer Cards -->
+    <!-- Card 1 -->
+    <rect x="25" y="65" width="255" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="40" y="95" font-size="14" font-weight="bold" fill="#d2a8ff">1. Прикладной</text>
+    <text x="40" y="120" font-size="12.5" fill="#8b949e">Само письмо:</text>
+    <rect x="40" y="130" width="225" height="40" rx="6" fill="#21262d"/>
+    <text x="50" y="155" font-family="monospace" font-size="12" fill="#7ee787">Данные: POST /login</text>
+    <text x="40" y="195" font-size="11" fill="#8b949e">Чистый смысл запроса</text>
+
+    <!-- Arrow inside -->
+    <text x="290" y="145" font-size="20" fill="#a371f7">➔</text>
+
+    <!-- Card 2 -->
+    <rect x="315" y="65" width="245" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="330" y="95" font-size="14" font-weight="bold" fill="#e3b341">2. Транспортный (TCP)</text>
+    <text x="330" y="120" font-size="12.5" fill="#8b949e">Наклеили Порт (дверь):</text>
+    <rect x="330" y="130" width="215" height="40" rx="6" fill="#21262d"/>
+    <text x="340" y="155" font-family="monospace" font-size="12" fill="#f0883e">[Порт 443 + Данные]</text>
+    <text x="330" y="195" font-size="11" fill="#8b949e">TCP надёжно / UDP быстро</text>
+
+    <!-- Arrow inside -->
+    <text x="570" y="145" font-size="20" fill="#a371f7">➔</text>
+
+    <!-- Card 3 -->
+    <rect x="595" y="65" width="245" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="610" y="95" font-size="14" font-weight="bold" fill="#58a6ff">3. Сетевой (IP)</text>
+    <text x="610" y="120" font-size="12.5" fill="#8b949e">Наклеили IP (адрес дома):</text>
+    <rect x="610" y="130" width="215" height="40" rx="6" fill="#21262d"/>
+    <text x="618" y="155" font-family="monospace" font-size="11" fill="#79c0ff">[IP: [Порт: [Данные]]]</text>
+    <text x="610" y="195" font-size="11" fill="#8b949e">Роутеры смотрят только на IP</text>
+
+    <!-- Arrow inside -->
+    <text x="850" y="145" font-size="20" fill="#a371f7">➔</text>
+
+    <!-- Card 4 -->
+    <rect x="875" y="65" width="220" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="890" y="95" font-size="14" font-weight="bold" fill="#7ee787">4. Физический</text>
+    <text x="890" y="120" font-size="12.5" fill="#8b949e">Кабель / Wi-Fi:</text>
+    <rect x="890" y="130" width="190" height="40" rx="6" fill="#21262d"/>
+    <text x="900" y="155" font-family="monospace" font-size="12" fill="#7ee787">01101001 01110100</text>
+    <text x="890" y="195" font-size="11" fill="#8b949e">Электрические импульсы</text>
+  </g>
+
+  <!-- Arrow 2 to 3 -->
+  <path d="M 600 660 L 600 690" stroke="#8957e5" stroke-width="3" stroke-dasharray="5,5"/>
+  <polygon points="595,690 605,690 600,700" fill="#8957e5"/>
+
+  <!-- ================= STEP 3: TCP 3-WAY HANDSHAKE ================= -->
+  <g transform="translate(40, 705)">
+    <rect width="1120" height="235" rx="16" fill="url(#grad-tcp)" stroke="#d29922" stroke-width="1.5"/>
+    <rect x="25" y="20" width="240" height="30" rx="8" fill="#d29922"/>
+    <text x="35" y="40" font-size="13" font-weight="bold" fill="#000000">ШАГ 3: TCP РУКОПОЖАТИЕ</text>
+    <text x="280" y="41" font-size="18" font-weight="bold" fill="#c9d1d9">3-Way Handshake — Компьютеры «здороваются»</text>
+
+    <!-- Flow diagram -->
+    <rect x="25" y="65" width="600" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    
+    <!-- Step 1 SYN -->
+    <text x="45" y="98" font-size="13" font-weight="bold" fill="#58a6ff">1. Клиент ➔ Сервер:</text>
+    <text x="200" y="98" font-family="monospace" font-size="12.5" fill="#c9d1d9">SYN («Привет, свободен связаться?»)</text>
+    
+    <!-- Step 2 SYN-ACK -->
+    <text x="45" y="138" font-size="13" font-weight="bold" fill="#d29922">2. Сервер ➔ Клиент:</text>
+    <text x="200" y="138" font-family="monospace" font-size="12.5" fill="#c9d1d9">SYN-ACK («Слышу тебя, открыт! А ты?»)</text>
+
+    <!-- Step 3 ACK -->
+    <text x="45" y="178" font-size="13" font-weight="bold" fill="#7ee787">3. Клиент ➔ Сервер:</text>
+    <text x="200" y="178" font-family="monospace" font-size="12.5" fill="#c9d1d9">ACK («Отлично, начинаем общение!»)</text>
+
+    <!-- Hacker trick box -->
+    <rect x="645" y="65" width="450" height="150" rx="10" fill="#161b22" stroke="#f85149"/>
+    <text x="665" y="95" font-size="14" font-weight="bold" fill="#f85149">🎯 Фишка для хакера и защитника:</text>
+    <text x="665" y="122" font-size="13" fill="#c9d1d9">• <tspan fill="#f0883e" font-weight="bold">SYN-сканирование (Nmap):</tspan> Хакер шлёт SYN.</text>
+    <text x="665" y="144" font-size="13" fill="#8b949e">  Если сервер ответил SYN-ACK — порт открыт!</text>
+    <text x="665" y="166" font-size="13" fill="#8b949e">  Хакер обрывает связь (RST). Соединения нет,</text>
+    <text x="665" y="188" font-size="13" fill="#8b949e">  но хакер узнал все открытые порты сервера.</text>
+  </g>
+
+  <!-- Arrow 3 to 4 -->
+  <path d="M 600 940 L 600 970" stroke="#d29922" stroke-width="3" stroke-dasharray="5,5"/>
+  <polygon points="595,970 605,970 600,980" fill="#d29922"/>
+
+  <!-- ================= STEP 4: SERVER DECAPSULATION ================= -->
+  <g transform="translate(40, 985)">
+    <rect width="1120" height="235" rx="16" fill="url(#grad-server)" stroke="#2ea043" stroke-width="1.5"/>
+    <rect x="25" y="20" width="220" height="30" rx="8" fill="#2ea043"/>
+    <text x="35" y="40" font-size="13" font-weight="bold" fill="#ffffff">ШАГ 4: СЕРВЕР (РАСПАКОВКА)</text>
+    <text x="260" y="41" font-size="18" font-weight="bold" fill="#c9d1d9">Декапсуляция (Снизу вверх: Снятие слоёв матрёшки)</text>
+
+    <!-- Decap steps -->
+    <rect x="25" y="65" width="340" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="40" y="95" font-size="14" font-weight="bold" fill="#58a6ff">1. Сетевой уровень (IP)</text>
+    <text x="40" y="125" font-size="13" fill="#c9d1d9">• Сервер читает IP-адрес на коробке.</text>
+    <text x="40" y="150" font-size="13" fill="#c9d1d9">• «Это мой адрес!»</text>
+    <text x="40" y="185" font-size="12" font-weight="bold" fill="#7ee787">✔ Срывает внешнюю коробку с IP</text>
+
+    <rect x="385" y="65" width="340" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="400" y="95" font-size="14" font-weight="bold" fill="#e3b341">2. Транспортный уровень (TCP)</text>
+    <text x="400" y="125" font-size="13" fill="#c9d1d9">• Читает номер порта: Порт 443.</text>
+    <text x="400" y="150" font-size="13" fill="#c9d1d9">• «Это веб-серверу, а не в БД!»</text>
+    <text x="400" y="185" font-size="12" font-weight="bold" fill="#7ee787">✔ Срывает конверт с портом</text>
+
+    <rect x="745" y="65" width="350" height="150" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="760" y="95" font-size="14" font-weight="bold" fill="#d2a8ff">3. Прикладной (Backend)</text>
+    <text x="760" y="125" font-size="13" fill="#c9d1d9">• Веб-сервер получает чистое письмо:</text>
+    <rect x="760" y="135" width="320" height="35" rx="6" fill="#21262d"/>
+    <text x="770" y="158" font-family="monospace" font-size="12" fill="#7ee787">POST /login {"user":"admin"}</text>
+    <text x="760" y="195" font-size="12" fill="#8b949e">Проверяет пароль в базе данных</text>
+  </g>
+
+  <!-- Arrow 4 to 5 -->
+  <path d="M 600 1220 L 600 1250" stroke="#2ea043" stroke-width="3" stroke-dasharray="5,5"/>
+  <polygon points="595,1250 605,1250 600,1260" fill="#2ea043"/>
+
+  <!-- ================= STEP 5: RESPONSE & STATUS CODES ================= -->
+  <g transform="translate(40, 1265)">
+    <rect width="1120" height="245" rx="16" fill="url(#grad-codes)" stroke="#da3633" stroke-width="1.5"/>
+    <rect x="25" y="20" width="220" height="30" rx="8" fill="#da3633"/>
+    <text x="35" y="40" font-size="13" font-weight="bold" fill="#ffffff">ШАГ 5: ОТВЕТ СЕРВЕРА</text>
+    <text x="260" y="41" font-size="18" font-weight="bold" fill="#c9d1d9">HTTP Статус-коды (Что сервер говорит в ответ)</text>
+
+    <!-- Grid of codes -->
+    <!-- 2xx -->
+    <rect x="25" y="65" width="200" height="160" rx="10" fill="#161b22" stroke="#2ea043"/>
+    <text x="40" y="95" font-size="16" font-weight="bold" fill="#7ee787">200 OK</text>
+    <text x="40" y="120" font-size="12" fill="#8b949e">Группа 2xx: Успех</text>
+    <text x="40" y="145" font-size="12.5" fill="#c9d1d9">Запрос выполнен.</text>
+    <text x="40" y="165" font-size="12.5" fill="#c9d1d9">Пароль верный,</text>
+    <text x="40" y="185" font-size="12.5" fill="#c9d1d9">вход разрешён!</text>
+    <text x="40" y="210" font-size="11" font-weight="bold" fill="#7ee787">🎯 Атака удалась</text>
+
+    <!-- 3xx -->
+    <rect x="245" y="65" width="200" height="160" rx="10" fill="#161b22" stroke="#388bfd"/>
+    <text x="260" y="95" font-size="16" font-weight="bold" fill="#58a6ff">301 / 302</text>
+    <text x="260" y="120" font-size="12" fill="#8b949e">Группа 3xx: Redirect</text>
+    <text x="260" y="145" font-size="12.5" fill="#c9d1d9">«Перейди по другой</text>
+    <text x="260" y="165" font-size="12.5" fill="#c9d1d9">ссылке в заголовке</text>
+    <text x="260" y="185" font-size="12.5" fill="#c9d1d9">Location».</text>
+    <text x="260" y="210" font-size="11" fill="#8b949e">Перенаправление</text>
+
+    <!-- 401 & 403 -->
+    <rect x="465" y="65" width="215" height="160" rx="10" fill="#161b22" stroke="#d29922"/>
+    <text x="480" y="95" font-size="16" font-weight="bold" fill="#d29922">401 / 403</text>
+    <text x="480" y="120" font-size="12" fill="#8b949e">Группа 4xx: Доступ</text>
+    <text x="480" y="145" font-size="12.5" fill="#c9d1d9">• 401: Ты кто? Войди.</text>
+    <text x="480" y="165" font-size="12.5" fill="#c9d1d9">• 403: Сюда нельзя!</text>
+    <text x="480" y="190" font-size="11.5" font-weight="bold" fill="#e3b341">🎯 Для хакера:</text>
+    <text x="480" y="210" font-size="11" fill="#8b949e">403 = папка реально есть!</text>
+
+    <!-- 404 & 429 -->
+    <rect x="700" y="65" width="195" height="160" rx="10" fill="#161b22" stroke="#8b949e"/>
+    <text x="715" y="95" font-size="16" font-weight="bold" fill="#c9d1d9">404 / 429</text>
+    <text x="715" y="120" font-size="12" fill="#8b949e">Группа 4xx: Ошибки</text>
+    <text x="715" y="145" font-size="12.5" fill="#c9d1d9">• 404: Страницы нет.</text>
+    <text x="715" y="165" font-size="12.5" fill="#c9d1d9">• 429: Слишком много</text>
+    <text x="715" y="185" font-size="12.5" fill="#c9d1d9">запросов (Rate limit).</text>
+    <text x="715" y="210" font-size="11" fill="#8b949e">Защита от перебора</text>
+
+    <!-- 500 -->
+    <rect x="915" y="65" width="180" height="160" rx="10" fill="#161b22" stroke="#f85149"/>
+    <text x="930" y="95" font-size="16" font-weight="bold" fill="#f85149">500 ERROR</text>
+    <text x="930" y="120" font-size="12" fill="#8b949e">Группа 5xx: Сбой</text>
+    <text x="930" y="145" font-size="12.5" fill="#c9d1d9">Сервер сломался!</text>
+    <text x="930" y="165" font-size="12.5" fill="#c9d1d9">Код упал от твоего</text>
+    <text x="930" y="185" font-size="12.5" fill="#c9d1d9">запроса.</text>
+    <text x="930" y="210" font-size="11" font-weight="bold" fill="#f85149">🔥 ДЖЕКПОТ (Уязвимость)</text>
+  </g>
+</svg>
+"""
+
+output_path = r"c:\Users\giogo\OneDrive\Desktop\Security\network_path.svg"
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(svg_content)
+
+print(f"File created successfully at {output_path}")
