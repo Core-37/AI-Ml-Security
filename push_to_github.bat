@@ -1,17 +1,12 @@
 @echo off
-chcp 65001 > nul
-title Отправка проекта на GitHub
-echo =======================================================
-echo   Привет, Георгий! Отправляем файлы на твой GitHub...
-echo =======================================================
+cd /d "%~dp0"
+echo ===================================================
+echo Pushing Security project to GitHub...
+echo ===================================================
 echo.
-cd /d "C:\Users\giogo\OneDrive\Desktop\Security"
-
 git push -u origin main
-
 echo.
-echo =======================================================
-echo   Если написано "Everything up-to-date" или "branch 'main' set up",
-echo   значит ВСЕ ФАЙЛЫ УСПЕШНО НА GITHUB!
-echo =======================================================
+echo ===================================================
+echo Finished! If no errors above, refresh your GitHub.
+echo ===================================================
 pause
