@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="100%" height="100%" style="background-color: #0d1117; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <rect x="30" y="25" width="1140" height="75" rx="14" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="55" y="60" font-size="24" font-weight="bold" fill="#58a6ff">🛡️ АРХИТЕКТУРА И ЗАЩИТА БРАУЗЕРА (DOM • SOP • CORS • CSP • STORAGE)</text>
+  <text x="55" y="84" font-size="14" fill="#8b949e">Как браузер изолирует вкладки друг от друга, где хранит токены и как защищает от кражи данных</text>
+
+  <!-- 3 Pillars Row -->
+  <!-- SOP -->
+  <g transform="translate(30, 120)">
+    <rect width="365" height="290" rx="14" fill="#161b22" stroke="#1f6feb" stroke-width="2"/>
+    <rect x="20" y="18" width="325" height="34" rx="8" fill="#1f6feb"/>
+    <text x="32" y="40" font-size="15" font-weight="bold" fill="#ffffff">1. SOP (Same-Origin Policy)</text>
+    <text x="20" y="75" font-size="14" font-weight="bold" fill="#79c0ff">«Глухая стена между вкладками»</text>
+    <text x="20" y="100" font-size="12.5" fill="#c9d1d9">Вкладка evil.com НЕ МОЖЕТ прочитать</text>
+    <text x="20" y="120" font-size="12.5" fill="#c9d1d9">ответы и данные вкладки mybank.com.</text>
+    <rect x="20" y="138" width="325" height="90" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="32" y="160" font-size="12" font-weight="bold" fill="#7ee787">Origin = Протокол + Домен + Порт</text>
+    <text x="32" y="182" font-family="monospace" font-size="12" fill="#d2a8ff">https:// + bank.com + :443</text>
+    <text x="32" y="206" font-size="11.5" fill="#f85149">Если хоть 1 часть отличается ➔ ЧУЖАК!</text>
+    <text x="20" y="255" font-size="12" fill="#8b949e">✔ Защищает от чтения чужих данных</text>
+    <text x="20" y="275" font-size="12" fill="#8b949e">⚠️ Но не мешает отправить запрос (CSRF!)</text>
+  </g>
+
+  <!-- CORS -->
+  <g transform="translate(417, 120)">
+    <rect width="365" height="290" rx="14" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+    <rect x="20" y="18" width="325" height="34" rx="8" fill="#d29922"/>
+    <text x="32" y="40" font-size="15" font-weight="bold" fill="#000000">2. CORS (Cross-Origin Sharing)</text>
+    <text x="20" y="75" font-size="14" font-weight="bold" fill="#e3b341">«Официальная дверь по пропуску»</text>
+    <text x="20" y="100" font-size="12.5" fill="#c9d1d9">Разрешает фронтенду app.site.com</text>
+    <text x="20" y="120" font-size="12.5" fill="#c9d1d9">законно брать данные у api.site.com.</text>
+    <rect x="20" y="138" width="325" height="90" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="32" y="160" font-family="monospace" font-size="11.5" fill="#7ee787">Access-Control-Allow-Origin:</text>
+    <text x="32" y="180" font-family="monospace" font-size="11.5" fill="#79c0ff">  https://app.site.com</text>
+    <text x="32" y="202" font-family="monospace" font-size="11.5" fill="#f0883e">Access-Control-Allow-Credentials: true</text>
+    <text x="20" y="255" font-size="12" fill="#f85149">🔥 Опасность: Allow-Origin: * или отражение</text>
+    <text x="20" y="275" font-size="12" fill="#f85149">любого Origin вместе с Credentials: true!</text>
+  </g>
+
+  <!-- CSP -->
+  <g transform="translate(805, 120)">
+    <rect width="365" height="290" rx="14" fill="#161b22" stroke="#2ea043" stroke-width="2"/>
+    <rect x="20" y="18" width="325" height="34" rx="8" fill="#2ea043"/>
+    <text x="32" y="40" font-size="15" font-weight="bold" fill="#ffffff">3. CSP (Content Security Policy)</text>
+    <text x="20" y="75" font-size="14" font-weight="bold" fill="#7ee787">«Фейсконтроль против XSS»</text>
+    <text x="20" y="100" font-size="12.5" fill="#c9d1d9">Приказ от сервера браузеру: откуда</text>
+    <text x="20" y="120" font-size="12.5" fill="#c9d1d9">разрешено загружать и запускать JS-код.</text>
+    <rect x="20" y="138" width="325" height="90" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="32" y="160" font-family="monospace" font-size="11.5" fill="#7ee787">Content-Security-Policy:</text>
+    <text x="32" y="180" font-family="monospace" font-size="11.5" fill="#c9d1d9">  default-src 'self';</text>
+    <text x="32" y="200" font-family="monospace" font-size="11.5" fill="#d2a8ff">  script-src 'self' https://cdn.com</text>
+    <text x="20" y="255" font-size="12" fill="#7ee787">✔ Блокирует внедрённые &lt;script&gt; (XSS)</text>
+    <text x="20" y="275" font-size="12" fill="#f85149">⚠️ Дыра: unsafe-inline / unsafe-eval</text>
+  </g>
+
+  <!-- Bottom Row: DOM & Browser Storage -->
+  <g transform="translate(30, 435)">
+    <rect width="550" height="295" rx="14" fill="#161b22" stroke="#8957e5" stroke-width="2"/>
+    <rect x="20" y="18" width="510" height="34" rx="8" fill="#8957e5"/>
+    <text x="32" y="40" font-size="15" font-weight="bold" fill="#ffffff">🌳 DOM (Document Object Model) — Живое дерево страницы</text>
+    <text x="20" y="75" font-size="13" fill="#c9d1d9">Браузер превращает HTML-текст в живое дерево объектов, которым</text>
+    <text x="20" y="95" font-size="13" fill="#c9d1d9">управляет JavaScript (меняет кнопки, текст, читает поля ввода).</text>
+    <rect x="20" y="112" width="510" height="160" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="35" y="138" font-family="monospace" font-size="12.5" fill="#79c0ff">window.document</text>
+    <text x="55" y="162" font-family="monospace" font-size="12.5" fill="#c9d1d9">├── &lt;html&gt; ➔ &lt;body&gt; ➔ &lt;div id="chat"&gt;</text>
+    <text x="55" y="186" font-family="monospace" font-size="12.5" fill="#f0883e">├── Источники (Sources): location.search, location.hash</text>
+    <text x="55" y="210" font-family="monospace" font-size="12.5" fill="#f85149">└── Опасные стоки (Sinks): element.innerHTML, eval()</text>
+    <text x="35" y="248" font-size="12" font-weight="bold" fill="#f85149">🎯 DOM XSS: когда данные из URL попадают прямо в innerHTML!</text>
+  </g>
+
+  <g transform="translate(605, 435)">
+    <rect width="565" height="295" rx="14" fill="#161b22" stroke="#da3633" stroke-width="2"/>
+    <rect x="20" y="18" width="525" height="34" rx="8" fill="#da3633"/>
+    <text x="32" y="40" font-size="15" font-weight="bold" fill="#ffffff">🗄️ ХРАНИЛИЩА БРАУЗЕРА: Cookies vs LocalStorage vs SessionStorage</text>
+    
+    <rect x="20" y="68" width="525" height="65" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="32" y="90" font-size="13" font-weight="bold" fill="#7ee787">1. Cookies (Куки) — до 4 КБ</text>
+    <text x="32" y="108" font-size="12" fill="#c9d1d9">Улетают на сервер АВТОМАТИЧЕСКИ с каждым запросом.</text>
+    <text x="32" y="124" font-size="11.5" fill="#58a6ff">Флаги защиты: HttpOnly (нельзя украсть через JS!), Secure, SameSite</text>
+
+    <rect x="20" y="143" width="525" height="65" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="32" y="165" font-size="13" font-weight="bold" fill="#e3b341">2. LocalStorage — до 5–10 МБ (Вечное хранилище)</text>
+    <text x="32" y="183" font-size="12" fill="#c9d1d9">Хранится вечно даже после перезагрузки ПК. Управляется только из JS.</text>
+    <text x="32" y="199" font-size="11.5" fill="#f85149">⚠️ Опасность: при любом XSS хакер крадёт токен: localStorage.getItem('jwt')</text>
+
+    <rect x="20" y="218" width="525" height="60" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="32" y="240" font-size="13" font-weight="bold" fill="#d2a8ff">3. SessionStorage — до 5 МБ (На одну вкладку)</text>
+    <text x="32" y="260" font-size="12" fill="#c9d1d9">Живёт только пока открыта текущая вкладка. Закрыл вкладку — всё стёрлось.</text>
+  </g>
+</svg>

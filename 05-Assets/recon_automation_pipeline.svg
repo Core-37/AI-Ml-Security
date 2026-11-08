@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="100%" style="background-color: #0d1117; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <rect x="30" y="25" width="1140" height="75" rx="14" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="55" y="60" font-size="24" font-weight="bold" fill="#7ee787">⚡ КОНВЕЙЕР АВТОМАТИЗАЦИИ (RECON FLOW) И ЛОКАЛЬНЫЕ ПОЛИГОНЫ</text>
+  <text x="55" y="84" font-size="14" fill="#8b949e">Как охотники за багами автоматизируют поиск скрытых папок, старых ссылок и уязвимостей</text>
+
+  <!-- Pipeline Row -->
+  <g transform="translate(30, 125)">
+    <rect width="1140" height="230" rx="14" fill="#161b22" stroke="#2ea043" stroke-width="2"/>
+    <text x="25" y="35" font-size="17" font-weight="bold" fill="#7ee787">🚀 БОЕВОЙ ПАЙПЛАЙН РАЗВЕДКИ (RECON FLOW В ОДНУ ЦЕПОЧКУ):</text>
+
+    <!-- Tool 1 -->
+    <rect x="25" y="55" width="255" height="150" rx="10" fill="#0d1117" stroke="#58a6ff"/>
+    <text x="40" y="82" font-size="15" font-weight="bold" fill="#58a6ff">1. gau &amp; waybackurls</text>
+    <text x="40" y="105" font-size="12" fill="#8b949e">Машина времени веба:</text>
+    <text x="40" y="125" font-size="12" fill="#c9d1d9">Достают тысячи старых и</text>
+    <text x="40" y="143" font-size="12" fill="#c9d1d9">забытых ссылок сайта из</text>
+    <text x="40" y="161" font-size="12" fill="#c9d1d9">архивов интернета.</text>
+    <text x="40" y="188" font-family="monospace" font-size="11.5" fill="#7ee787">gau target.com &gt; urls.txt</text>
+
+    <text x="292" y="135" font-size="22" fill="#7ee787">➔</text>
+
+    <!-- Tool 2 -->
+    <rect x="320" y="55" width="255" height="150" rx="10" fill="#0d1117" stroke="#e3b341"/>
+    <text x="335" y="82" font-size="15" font-weight="bold" fill="#e3b341">2. ffuf (Fuzzing)</text>
+    <text x="335" y="105" font-size="12" fill="#8b949e">Скоростной поиск скрытых дверей:</text>
+    <text x="335" y="125" font-size="12" fill="#c9d1d9">Перебирает тысячи слов в</text>
+    <text x="335" y="143" font-size="12" fill="#c9d1d9">секунду вместо слова FUZZ</text>
+    <text x="335" y="161" font-size="12" fill="#c9d1d9">(/admin, /.env, /backup.zip).</text>
+    <text x="335" y="188" font-family="monospace" font-size="11.5" fill="#7ee787">ffuf -u site.com/FUZZ -w list</text>
+
+    <text x="587" y="135" font-size="22" fill="#7ee787">➔</text>
+
+    <!-- Tool 3 -->
+    <rect x="615" y="55" width="255" height="150" rx="10" fill="#0d1117" stroke="#d2a8ff"/>
+    <text x="630" y="82" font-size="15" font-weight="bold" fill="#d2a8ff">3. nuclei (Сканер)</text>
+    <text x="630" y="105" font-size="12" fill="#8b949e">Авто-проверка по шаблонам:</text>
+    <text x="630" y="125" font-size="12" fill="#c9d1d9">Проверяет найденные адреса</text>
+    <text x="630" y="143" font-size="12" fill="#c9d1d9">по базе тысяч готовых CVE,</text>
+    <text x="630" y="161" font-size="12" fill="#c9d1d9">утечек ключей и багов.</text>
+    <text x="630" y="188" font-family="monospace" font-size="11.5" fill="#7ee787">nuclei -l urls.txt -t cves/</text>
+
+    <text x="882" y="135" font-size="22" fill="#7ee787">➔</text>
+
+    <!-- Tool 4 -->
+    <rect x="910" y="55" width="205" height="150" rx="10" fill="#0d1117" stroke="#f85149"/>
+    <text x="925" y="82" font-size="15" font-weight="bold" fill="#f85149">4. Burp Suite</text>
+    <text x="925" y="105" font-size="12" fill="#8b949e">Ручное добивание:</text>
+    <text x="925" y="125" font-size="12" fill="#c9d1d9">Самые интересные</text>
+    <text x="925" y="143" font-size="12" fill="#c9d1d9">находки открываем</text>
+    <text x="925" y="161" font-size="12" fill="#c9d1d9">в Repeater и ломаем</text>
+    <text x="925" y="179" font-size="12" fill="#c9d1d9">логику руками!</text>
+  </g>
+
+  <!-- Bottom Row: Vulnerable Labs -->
+  <g transform="translate(30, 380)">
+    <rect width="1140" height="210" rx="14" fill="#161b22" stroke="#1f6feb" stroke-width="2"/>
+    <text x="25" y="35" font-size="17" font-weight="bold" fill="#58a6ff">🧪 4 УЯЗВИМЫХ СТЕНДА ДЛЯ ЛЕГАЛЬНОЙ ТРЕНИРОВКИ НА СВОЁМ ПК (В DOCKER):</text>
+
+    <rect x="25" y="55" width="260" height="135" rx="10" fill="#0d1117" stroke="#30363d"/>
+    <text x="40" y="82" font-size="15" font-weight="bold" fill="#f0883e">1. DVWA</text>
+    <text x="40" y="102" font-size="11.5" fill="#8b949e">Damn Vulnerable Web App</text>
+    <text x="40" y="124" font-size="12" fill="#c9d1d9">Классика с переключателем</text>
+    <text x="40" y="142" font-size="12" fill="#c9d1d9">сложности: Low ➔ Medium ➔</text>
+    <text x="40" y="160" font-size="12" fill="#c9d1d9">High ➔ Impossible (код патча).</text>
+
+    <rect x="302" y="55" width="260" height="135" rx="10" fill="#0d1117" stroke="#30363d"/>
+    <text x="317" y="82" font-size="15" font-weight="bold" fill="#7ee787">2. OWASP Juice Shop</text>
+    <text x="317" y="102" font-size="11.5" fill="#8b949e">Современный интернет-магазин</text>
+    <text x="317" y="124" font-size="12" fill="#c9d1d9">Написан на Node.js + Angular.</text>
+    <text x="317" y="142" font-size="12" fill="#c9d1d9">Полностью на REST API, JSON</text>
+    <text x="317" y="160" font-size="12" fill="#c9d1d9">и JWT-токенах (100+ задач!).</text>
+
+    <rect x="579" y="55" width="260" height="135" rx="10" fill="#0d1117" stroke="#30363d"/>
+    <text x="594" y="82" font-size="15" font-weight="bold" fill="#d2a8ff">3. bWAPP</text>
+    <text x="594" y="102" font-size="11.5" fill="#8b949e">Buggy Web Application</text>
+    <text x="594" y="124" font-size="12" fill="#c9d1d9">Более 100 отдельных видов</text>
+    <text x="594" y="142" font-size="12" fill="#c9d1d9">уязвимостей в выпадающем</text>
+    <text x="594" y="160" font-size="12" fill="#c9d1d9">списке для точечной отработки.</text>
+
+    <rect x="856" y="55" width="260" height="135" rx="10" fill="#0d1117" stroke="#30363d"/>
+    <text x="871" y="82" font-size="15" font-weight="bold" fill="#58a6ff">4. PortSwigger Academy</text>
+    <text x="871" y="102" font-size="11.5" fill="#8b949e">Онлайн-полигон №1 в мире</text>
+    <text x="871" y="124" font-size="12" fill="#c9d1d9">250+ бесплатных облачных</text>
+    <text x="871" y="142" font-size="12" fill="#c9d1d9">лабораторных стендов по всем</text>
+    <text x="871" y="160" font-size="12" fill="#c9d1d9">темам веба и API.</text>
+  </g>
+</svg>
