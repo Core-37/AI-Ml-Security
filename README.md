@@ -21,5 +21,5 @@
 ---
 
 ## 👤 Автор проекта
-- **Исследователь:** `g37`
-- **Репозиторий на GitHub:** [giobio291-frys/Security37](https://github.com/giobio291-frys/Security37)
+- **Исследователь:** `Core-37` (Thirty7)
+- **Репозиторий на GitHub:** [Core-37/Security37](https://github.com/Core-37/Security37)
