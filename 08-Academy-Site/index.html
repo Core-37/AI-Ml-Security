@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORE-37 // Cyber &amp; AI Security Intelligence Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-distro-mode="both">
+
+  <!-- Top Liquid Silver Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgressBar"></div>
+
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-box">
+      <div class="brand-title">
+        <span>◆</span>
+        <span>CORE-37 // ACADEMY</span>
+      </div>
+      <div class="brand-subtitle">Cybersecurity, Web Hacking &amp; AI Security Platform</div>
+    </div>
+
+    <!-- XP & Progress Tracker -->
+    <div class="xp-widget">
+      <div class="xp-header">
+        <span>Прогресс: <span id="xpText">0 / 35 (0%)</span></span>
+        <span class="xp-rank-badge" id="xpRank">L0 Новобранец</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="xpFill"></div>
+      </div>
+    </div>
+
+    <!-- Dynamic Navigation List -->
+    <ul class="nav-list" id="navList"></ul>
+  </aside>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    <!-- Sticky Topbar -->
+    <header class="topbar">
+      <div style="display:flex; align-items:center; gap:10px; flex:1; min-width:250px;">
+        <button class="btn-action" onclick="toggleMobileSidebar()" title="Меню разделов">☰</button>
+        <div class="search-box">
+          <span class="search-icon">⌕</span>
+          <input
+            type="text"
+            id="globalSearchInput"
+            class="search-input"
+            placeholder="Быстрый поиск (pacman, burp, jwt, idor, rag, fgsm, qualys)..."
+            oninput="handleGlobalSearch(this.value)"
+          >
+          <span class="search-kbd">Ctrl K</span>
+        </div>
+      </div>
+
+      <div class="topbar-controls">
+        <div class="distro-switcher" title="Фильтр команд дистрибутива Linux">
+          <button class="distro-btn active" data-distro="both" onclick="setDistroMode('both')">Arch + Ubuntu</button>
+          <button class="distro-btn" data-distro="arch" onclick="setDistroMode('arch')">Arch Linux</button>
+          <button class="distro-btn" data-distro="ubuntu" onclick="setDistroMode('ubuntu')">Ubuntu</button>
+        </div>
+
+        <button class="btn-action" onclick="renderSection('analogies')" title="Бытовые аналогии">💡 Аналогии</button>
+        <button class="btn-action" onclick="renderSection('commands')" title="Переводчик команд Arch и Ubuntu">⇄ Команды</button>
+        <button class="btn-action" id="themeBtn" onclick="toggleTheme()" title="Переключить тему оформления">☀️ Light</button>
+      </div>
+    </header>
+
+    <!-- Dynamic Section Content -->
+    <main class="content-area" id="contentArea"></main>
+  </div>
+
+  <!-- Floating Scroll-to-Top Glass Button -->
+  <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Наверх">↑</button>
+
+  <!-- Fullscreen Image Lightbox -->
+  <div class="lightbox" id="lightboxModal" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="Увеличенная схема">
+  </div>
+
+  <!-- Course Data Modules & App Logic -->
+  <script src="data-part1-foundation.js"></script>
+  <script src="data-part2-web-networking.js"></script>
+  <script src="data-part3-ai-security.js"></script>
+  <script src="data-part4-career-tools.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
